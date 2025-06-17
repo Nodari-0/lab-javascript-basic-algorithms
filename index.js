@@ -39,3 +39,61 @@ if (hacker1.localeCompare(hacker2) < 0) {
 } else {
   console.log("What?! You both have the same name?");
 }
+// Bonus 1:
+// Go to the lorem ipsum generator website and:
+
+// Generate 3 paragraphs. Store the text in a new string variable named longText.
+// Make your program count the number of words in the string.
+// Make your program count the number of times the Latin word et appears.
+// Bonus 2:
+// Create a new variable, phraseToCheck, containing some string value. Write a code to check if the value assigned to this variable is a Palindrome. Here are some examples of palindromes:
+
+// "A man, a plan, a canal, Panama!"
+// "Amor, Roma"
+// "race car"
+// "stack cats"
+// "step on no pets"
+// "taco cat"
+// "put it up"
+// "Was it a car or a cat I saw?" and "No 'x' in Nixon".
+// IMPORTANT: If you use Google to help you to find a solution to this iteration, you might run into some advanced solutions that use string or array methods (such as join(), reverse(), etc.). However, we want you to apply your current knowledge and try to come up with a solution by just using the for loop and if-else statements with some break and continue.
+let longText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
+let etCount = 0;
+let words = longText.split(" ");
+for (let i = 0; i < words.length; i++) {
+  if (words[i].toLowerCase() === "et") {
+    etCount++;
+  }
+}
+console.log(`The word "et" appears ${etCount} times in the text.`);
+
+// Bonus 2: Palindrome check
+let phraseToCheck = "A man, a plan, a canal, Panama!";
+
+// Step 1: Clean the string
+
+let cleanedSentence = "";
+for (let i = 0; i < phraseToCheck.length; i++) {
+  let char = phraseToCheck[i].toLowerCase();
+
+  // Check if it's a letter or number (basic alphabet filter)
+  if ((char >= 'a' && char <= 'z') || (char >= '0' && char <= '9')) {
+    cleanedSentence += char;
+  }
+}
+
+// Step 2: Check for palindrome
+let isPalindrome = true;
+for (let i = 0; i < cleanedSentence.length / 2; i++) {
+  if (cleanedSentence[i] !== cleanedSentence[cleanedSentence.length - 1 - i]) {
+    isPalindrome = false;
+    break;
+  }
+}
+
+// Step 3: Output
+if (isPalindrome) {
+  console.log("It's a palindrome!");
+} else {
+  console.log("Not a palindrome.");
+}
